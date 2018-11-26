@@ -22,7 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @DiscriminatorColumn(name="discr", type="string")
  * @DiscriminatorMap({"censeur" = "Censeur", "professeur" = "Professeur", "parent"="Parents"})
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @ORM\Id
