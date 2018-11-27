@@ -11,10 +11,10 @@ security:
             id:  fos_user.user_provider.username_email
 
     role_hierarchy:
-        ROLE_ADMIN_GENERAL:
-        ROLE_CENSEUR:
-        ROLE_PROFESSEUR:
-        ROLE_PARENT:
+        ROLE_ADMIN_GENERAL:       [ROLE_USER]
+        ROLE_CENSEUR:       [ROLE_USER]
+        ROLE_PROFESSEUR:       [ ROLE_USER]
+        ROLE_PARENT:       [ ROLE_PARENT]
 
 
     firewalls:

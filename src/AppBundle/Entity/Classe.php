@@ -130,5 +130,28 @@ class Classe
     {
         return $this->dateModification;
     }
-}
 
+    /**
+     * Set ecole
+     *
+     * @param \AppBundle\Entity\Ecole $ecole
+     *
+     * @return Classe
+     */
+    public function setEcole(\AppBundle\Entity\Ecole $ecole = null)
+    {
+        $this->ecole = $ecole;
+
+        return $this;
+    }
+
+    /**
+     * Get ecole
+     *
+     * @return \AppBundle\Entity\Ecole
+     */
+    public function getEcole()
+    {
+        return $this->ecole;
+    }
+}

@@ -15,7 +15,7 @@ class AfterLoginRedirectionHandler implements AuthenticationSuccessHandlerInterf
      * @var \Symfony\Component\Routing\RouterInterface
      */
     private $router;
-private $session;
+
     private $event;
 
     /**
@@ -72,6 +72,22 @@ private $session;
         }elseif(in_array('ROLE_CENSEUR', $rolesTab, true)){
             $msg = "Vous êtes connecté en tant que censeur";
             $redirection  = new RedirectResponse($this->router->generate('homepage_admin'));
+
+        }elseif(in_array('ROLE_INVESTISSEUR', $rolesTab, true)){
+
+
+            $msg = "Vous êtes connecté en tant qu'investisseur";
+            $redirection  = new RedirectResponse($this->router->generate('donateur_admin_TB'));
+
+
+        }
+        elseif(in_array('ROLE_COMMERCIAL', $rolesTab, true)){
+//            var_dump($session->get('section_id'));
+//            die();
+            $redirection  = new RedirectResponse($this->router->generate('sc_admin'));
+            $msg = "Vous êtes connecté en tant service commercial";
+            $this->session->getFlashBag()->add('info', "Bienvenu $user. $msg.");
+
 
         }
 

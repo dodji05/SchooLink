@@ -27,5 +27,52 @@ class EleveParent
     private $parent;
 
 
-}
 
+    /**
+     * Set eleve
+     *
+     * @param \AppBundle\Entity\Eleve $eleve
+     *
+     * @return EleveParent
+     */
+    public function setEleve(\AppBundle\Entity\Eleve $eleve)
+    {
+        $this->eleve = $eleve;
+
+        return $this;
+    }
+
+    /**
+     * Get eleve
+     *
+     * @return \AppBundle\Entity\Eleve
+     */
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Parents $parent
+     *
+     * @return EleveParent
+     */
+    public function setParent(\AppBundle\Entity\Parents $parent)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Parents
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+}

@@ -131,5 +131,28 @@ class Professeur extends User
     {
         return $this->dateModification;
     }
-}
 
+    /**
+     * Set compte
+     *
+     * @param \AppBundle\Entity\Compte $compte
+     *
+     * @return Professeur
+     */
+    public function setCompte(\AppBundle\Entity\Compte $compte = null)
+    {
+        $this->compte = $compte;
+
+        return $this;
+    }
+
+    /**
+     * Get compte
+     *
+     * @return \AppBundle\Entity\Compte
+     */
+    public function getCompte()
+    {
+        return $this->compte;
+    }
+}

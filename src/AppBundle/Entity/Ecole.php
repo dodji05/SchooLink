@@ -3,15 +3,21 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\Identifiers;
+use Doctrine\ORM\Mapping\OneToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ecole
  *
  * @ORM\Table(name="ecole")
+ * @ORM\EntityListeners("AppBundle\EntityListener\AppEntityListener")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EcoleRepository")
  */
 class Ecole
-{/**
+{
+    use Identifiers;
+    /**
  * @var int
  *
  * @ORM\Column(name="id", type="integer")
@@ -57,24 +63,41 @@ class Ecole
 
     /**
      * @var string
+     * @var string
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/jpg" })
      *
-     * @ORM\Column(name="logo", type="blob")
+     * @ORM\Column(name="logo", type="string",nullable=true)
      */
     private $logo;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetime", length=255)
+     * @ORM\Column(name="createdAt", type="datetime", length=255)
      */
-    private $dateCreation;
+    private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModification", type="datetime", length=255)
+     * @ORM\Column(name="updatedAt", type="datetime", length=255)
      */
-    private $dateModification;
+    private $updatedAt;
+
+    /**
+     *
+     * @OneToOne(targetEntity="Censeur", mappedBy="ecole")
+     *
+     */
+     private $censeur;
+
+    /**
+     * Ecole constructor.
+     */
+    public function __construct()
+    {
+        $this->codeTelephone = 'ab';
+    }
 
 
     /**
@@ -231,52 +254,29 @@ class Ecole
         return $this->logo;
     }
 
+
+
     /**
-     * Set dateCreation
+     * Set censeur
      *
-     * @param \DateTime $dateCreation
+     * @param \AppBundle\Entity\Censeur $censeur
      *
      * @return Ecole
      */
-    public function setDateCreation($dateCreation)
+    public function setCenseur(\AppBundle\Entity\Censeur $censeur = null)
     {
-        $this->dateCreation = $dateCreation;
+        $this->censeur = $censeur;
 
         return $this;
     }
 
     /**
-     * Get dateCreation
+     * Get censeur
      *
-     * @return \DateTime
+     * @return \AppBundle\Entity\Censeur
      */
-    public function getDateCreation()
+    public function getCenseur()
     {
-        return $this->dateCreation;
-    }
-
-    /**
-     * Set dateModification
-     *
-     * @param \DateTime $dateModification
-     *
-     * @return Ecole
-     */
-    public function setDateModification($dateModification)
-    {
-        $this->dateModification = $dateModification;
-
-        return $this;
-    }
-
-    /**
-     * Get dateModification
-     *
-     * @return \DateTime
-     */
-    public function getDateModification()
-    {
-        return $this->dateModification;
+        return $this->censeur;
     }
 }
-

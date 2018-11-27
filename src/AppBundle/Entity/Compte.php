@@ -32,4 +32,3 @@ class Compte
         return $this->id;
     }
 }
-

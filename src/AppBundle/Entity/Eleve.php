@@ -257,5 +257,28 @@ class Eleve
     {
         return $this->dateModification;
     }
-}
 
+    /**
+     * Set classe
+     *
+     * @param \AppBundle\Entity\Classe $classe
+     *
+     * @return Eleve
+     */
+    public function setClasse(\AppBundle\Entity\Classe $classe = null)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \AppBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+}

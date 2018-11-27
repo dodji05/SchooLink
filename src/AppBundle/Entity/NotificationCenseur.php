@@ -140,5 +140,52 @@ class NotificationCenseur
     {
         return $this->dateCreation;
     }
-}
 
+    /**
+     * Set emetteur
+     *
+     * @param integer $emetteur
+     *
+     * @return NotificationCenseur
+     */
+    public function setEmetteur($emetteur)
+    {
+        $this->emetteur = $emetteur;
+
+        return $this;
+    }
+
+    /**
+     * Get emetteur
+     *
+     * @return integer
+     */
+    public function getEmetteur()
+    {
+        return $this->emetteur;
+    }
+
+    /**
+     * Set destinataire
+     *
+     * @param integer $destinataire
+     *
+     * @return NotificationCenseur
+     */
+    public function setDestinataire($destinataire)
+    {
+        $this->destinataire = $destinataire;
+
+        return $this;
+    }
+
+    /**
+     * Get destinataire
+     *
+     * @return integer
+     */
+    public function getDestinataire()
+    {
+        return $this->destinataire;
+    }
+}
