@@ -34,8 +34,9 @@ class Censeur extends User
 
     /**
      * @var string
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/jpg" })
      *
-     * @ORM\Column(name="photo", type="blob")
+     * @ORM\Column(name="photo", type="string")
      */
     private $photo;
     /**
@@ -203,7 +204,7 @@ class Censeur extends User
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param mixed $photo
      *
      * @return Censeur
      */
@@ -217,7 +218,7 @@ class Censeur extends User
     /**
      * Get photo
      *
-     * @return string
+     * @return mixed
      */
     public function getPhoto()
     {

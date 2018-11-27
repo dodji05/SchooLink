@@ -46,6 +46,13 @@ class CenseurController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $censeur->setRoles(array('ROLE_CENSEUR'));
+
+              $file = $censeur->getPhoto();
+
+            if ($file) {
+                $fileName = $this->get('app.file_uploader')->upload($file);
+                $censeur->setPhoto($fileName);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($censeur);
             $em->flush();

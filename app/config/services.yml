@@ -39,3 +39,8 @@ services:
         arguments: ["@security.token_storage"]
         tags:
         - { name: "doctrine.orm.entity_listener" }
+
+        ##### Upload Image Manager #############
+    app.file_uploader:
+        class: AppBundle\Manager\FileUploader
+        arguments: ['%files_path%']
