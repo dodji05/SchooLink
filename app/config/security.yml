@@ -29,7 +29,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-#                    success_handler: redirect.after.login
+                success_handler: redirect.after.login
             remember_me:
                 secret: '%secret%'
 

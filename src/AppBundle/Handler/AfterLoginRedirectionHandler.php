@@ -54,10 +54,9 @@ class AfterLoginRedirectionHandler implements AuthenticationSuccessHandlerInterf
         }, $roles);
 
         $user = $token->getUser()->getusername();
-//        $section = $token->getUser()->getSection();
+
         $msg = "";
-       $session = $request->getSession();
-//        $session->set('section_id',$section);
+
 
         if(in_array('ROLE_ADMIN_GENERAL', $rolesTab, true)){
 
@@ -70,8 +69,12 @@ class AfterLoginRedirectionHandler implements AuthenticationSuccessHandlerInterf
             $this->session->getFlashBag()->add('info', "Bienvenu $user. $msg.");
 
         }elseif(in_array('ROLE_CENSEUR', $rolesTab, true)){
+            $ecole = $token->getUser()->getEecole();
+            $session = $request->getSession();
+            $session->set('ecole_id',$ecole);
+
             $msg = "Vous êtes connecté en tant que censeur";
-            $redirection  = new RedirectResponse($this->router->generate('homepage_admin'));
+            $redirection  = new RedirectResponse($this->router->generate('ecole_homepage'));
 
         }elseif(in_array('ROLE_INVESTISSEUR', $rolesTab, true)){
 
